@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="86592108d0d1411ca8b534df90d50037" Name="Diagram1" ZoomLevel="132" >
+        <EntityTypeShape EntityType="ColegioModel.Tutor" Width="1.5" PointX="1.25" PointY="1.375" FillColor="Cyan" />
+        <EntityTypeShape EntityType="ColegioModel.Estudiante" Width="1.5" PointX="3.75" PointY="1.375" FillColor="128, 255, 255" />
+        <AssociationConnector Association="ColegioModel.TutorEstudiante" />
+        <EntityTypeShape EntityType="ColegioModel.Asignatura" Width="1.5" PointX="8.25" PointY="1.625" FillColor="192, 255, 255" />
+        <EntityTypeShape EntityType="ColegioModel.Docente" Width="1.5" PointX="10.5" PointY="1.75" FillColor="192, 255, 255" />
+        <AssociationConnector Association="ColegioModel.DocenteAsignatura" />
+        <EntityTypeShape EntityType="ColegioModel.Calificacion" Width="1.5" PointX="5.875" PointY="1.875" FillColor="192, 255, 255" />
+        <AssociationConnector Association="ColegioModel.EstudianteCalificacion" />
+        <AssociationConnector Association="ColegioModel.AsignaturaCalificacion" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

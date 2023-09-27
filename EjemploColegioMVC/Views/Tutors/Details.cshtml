@@ -1,0 +1,57 @@
+﻿@model EjemploColegioMVC.Models.Tutor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tutor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+    
+</p>
+<h2>Estudiantes bajo su tutoria</h2>
+<table class="table">
+    <tr>
+        <th>Carnet</th>
+        <th>Nombre Completo</th>
+    </tr>
+    @foreach (var item in Model.Estudiantes)
+    {
+        <tr>
+            <td>@item.Carnet</td>
+            <td>@item.Apellido @item.Nombre </td>
+        </tr>
+    }
+</table>
