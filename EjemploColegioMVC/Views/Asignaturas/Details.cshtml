@@ -1,50 +1,51 @@
 ﻿@model EjemploColegioMVC.Models.Asignatura
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Asigantura";
 }
 
-<h2>Details</h2>
+<div class="card">
+    <div class="card-header">
+        <h2>@Model.Codigo - @Model.Nombre</h2>
+        <h3>@Model.Docente.Nombre</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-3">
+                <!--Datos generales-->
+                <p> <strong>Cantidad Creditos:</strong> <br />@Model.Creditos</p>
+                <p>Cantidad Alumnos: @Model.Calificaciones.Count</p>
+                <p>Promedio General: Pendiente</p>
+            </div>
+            <div class="col-9">
+                <!--Tabla con notas-->
+                <table class="table">
+                    <tr>
+                        <th>Apellido</th>
+                        <th>Nombre</th>
+                        <th>Acumulado</th>
+                        <th>Examen</th>
+                        <th>NF</th>
+                    </tr>
 
-<div>
-    <h4>Asignatura</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Codigo)
-        </dt>
+                    @foreach(var item in Model.Calificaciones)
+                    {
+                        decimal NF = item.Acumulado + item.Examen;
+                        string clase = "bg-success";
+                        if (NF < 60)
+                        { clase = "bg-danger"; }
 
-        <dd>
-            @Html.DisplayFor(model => model.Codigo)
-        </dd>
+                       <tr class="@clase">
+                           <td>@item.Estudiante.Apellido</td>
+                           <td>@item.Estudiante.Nombre</td>
+                           <td>@item.Acumulado</td>
+                           <td>@item.Examen</td>
+                           <td>@NF</td>
+                       </tr>
+            }
+                </table>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Creditos)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Creditos)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Docente.Inss)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Docente.Inss)
-        </dd>
-
-    </dl>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

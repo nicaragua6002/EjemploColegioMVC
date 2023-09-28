@@ -46,12 +46,14 @@
     <tr>
         <th>Carnet</th>
         <th>Nombre Completo</th>
+        <th></th>
     </tr>
     @foreach (var item in Model.Estudiantes)
     {
         <tr>
             <td>@item.Carnet</td>
             <td>@item.Apellido @item.Nombre </td>
+            <td><a href="@Url.Action("Details","Estudiantes",new {Id=item.Id})" class="btn btn-info" >Ver detalle</a> </td>
         </tr>
     }
 </table>
