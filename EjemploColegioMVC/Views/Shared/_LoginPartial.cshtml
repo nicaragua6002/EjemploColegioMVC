@@ -5,12 +5,33 @@
     {
     @Html.AntiForgeryToken()
 
-    <ul class="navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class="nav-link" })
-        </li>
-        <li><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
-    </ul>
+<ul class="navbar-nav navbar-right">
+
+    <li>
+        @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+    </li>
+    @if (User.IsInRole("Admin"))
+    {
+        <li>@Html.ActionLink("Tutores", "Index", "Tutors", new { area = "" }, new { @class = "nav-link" })</li>
+        <li>@Html.ActionLink("Alumnos", "Index", "Estudiantes", new { area = "" }, new { @class = "nav-link" })</li>
+        <li>@Html.ActionLink("Docentes", "Index", "Docentes", new { area = "" }, new { @class = "nav-link" })</li>
+        <li>@Html.ActionLink("Asignaturas", "Index", "Asignaturas", new { area = "" }, new { @class = "nav-link" })</li>
+        <li>@Html.ActionLink("Notas", "Index", "Calificacions", new { area = "" }, new { @class = "nav-link" })</li>
+    }
+    @if (User.IsInRole("Tutor"))
+    {
+        <li>@Html.ActionLink("Notas", "Index", "Calificacions", new { area = "" }, new { @class = "nav-link" })</li>
+
+    }
+    @if (User.IsInRole("Docente"))
+    {
+        <li>@Html.ActionLink("Alumnos", "Index", "Estudiantes", new { area = "" }, new { @class = "nav-link" })</li>
+        <li>@Html.ActionLink("Asignaturas", "Index", "Asignaturas", new { area = "" }, new { @class = "nav-link" })</li>
+        <li>@Html.ActionLink("Notas", "Index", "Calificacions", new { area = "" }, new { @class = "nav-link" })</li>
+
+    }
+    <li><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+</ul>
     }
 }
 else

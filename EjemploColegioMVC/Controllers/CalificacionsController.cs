@@ -10,6 +10,7 @@ using EjemploColegioMVC.Models;
 
 namespace EjemploColegioMVC.Controllers
 {
+    [Authorize]
     public class CalificacionsController : Controller
     {
         private ColegioModelContainer db = new ColegioModelContainer();
@@ -36,6 +37,7 @@ namespace EjemploColegioMVC.Controllers
             return View(calificacion);
         }
 
+        [Authorize(Roles ="Admin, Docente")]
         // GET: Calificacions/Create
         public ActionResult Create()
         {
@@ -63,6 +65,7 @@ namespace EjemploColegioMVC.Controllers
             return View(calificacion);
         }
 
+        [Authorize(Roles = "Admin, Docente")]
         // GET: Calificacions/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -97,7 +100,7 @@ namespace EjemploColegioMVC.Controllers
             ViewBag.AsignaturaId = new SelectList(db.Asignaturas, "Id", "Codigo", calificacion.AsignaturaId);
             return View(calificacion);
         }
-
+        [Authorize(Roles = "Admin, Docente")]
         // GET: Calificacions/Delete/5
         public ActionResult Delete(int? id)
         {

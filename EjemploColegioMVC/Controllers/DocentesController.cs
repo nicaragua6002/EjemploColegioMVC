@@ -10,6 +10,7 @@ using EjemploColegioMVC.Models;
 
 namespace EjemploColegioMVC.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class DocentesController : Controller
     {
         private ColegioModelContainer db = new ColegioModelContainer();
